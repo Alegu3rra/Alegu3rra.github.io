@@ -3,72 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name | Portfolio</title>
+  <title>Alejandra Guerra | Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   <style>
     :root {
-      --bg: #0b1020;
-      --bg-soft: rgba(255,255,255,0.06);
-      --card: rgba(255,255,255,0.08);
-      --text: #f5f7fb;
-      --muted: #a9b2c7;
-      --accent: #7c9cff;
-      --accent-2: #8ef0d0;
-      --border: rgba(255,255,255,0.12);
-      --shadow: 0 20px 60px rgba(0,0,0,0.35);
-      --radius: 24px;
-      --max: 1120px;
+      --bg: #081111;
+      --surface: #0d1717;
+      --text: #f4f7f7;
+      --muted: #9fb0b0;
+      --teal: #39b8b0;
+      --teal-soft: #173534;
+      --border: rgba(87, 159, 156, 0.18);
+      --max: 900px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(124,156,255,0.25), transparent 30%),
-        radial-gradient(circle at top right, rgba(142,240,208,0.16), transparent 25%),
-        linear-gradient(180deg, #0b1020 0%, #111831 100%);
+        radial-gradient(circle at top right, rgba(57, 184, 176, 0.08), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(57, 184, 176, 0.05), transparent 24%),
+        var(--bg);
       color: var(--text);
       line-height: 1.6;
-      min-height: 100vh;
       overflow-x: hidden;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
     .container {
-      width: min(92%, var(--max));
+      width: min(90%, var(--max));
       margin: 0 auto;
-    }
-
-    .glass {
-      background: var(--card);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
     }
 
     .reveal {
       opacity: 0;
-      transform: translateY(36px);
+      transform: translateY(22px);
       transition: opacity 0.8s ease, transform 0.8s ease;
-      will-change: opacity, transform;
     }
 
     .reveal.visible {
@@ -76,484 +48,269 @@
       transform: translateY(0);
     }
 
-    .delay-1 { transition-delay: 0.08s; }
-    .delay-2 { transition-delay: 0.16s; }
-    .delay-3 { transition-delay: 0.24s; }
-    .delay-4 { transition-delay: 0.32s; }
-
     @keyframes float {
       0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
+      50% { transform: translateY(-6px); }
     }
 
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 0 rgba(124,156,255,0); }
-      50% { box-shadow: 0 0 34px rgba(124,156,255,0.18); }
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 0 rgba(57, 184, 176, 0); }
+      50% { box-shadow: 0 0 40px rgba(57, 184, 176, 0.08); }
     }
 
-    @keyframes shimmer {
-      0% { transform: translateX(-120%); }
-      100% { transform: translateX(120%); }
-    }
-
-    @keyframes drift {
-      0%, 100% { transform: translate3d(0,0,0) scale(1); }
-      50% { transform: translate3d(10px,-12px,0) scale(1.04); }
+    @keyframes lineIn {
+      from { transform: scaleX(0); opacity: 0.5; }
+      to { transform: scaleX(1); opacity: 1; }
     }
 
     header {
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
-      z-index: 10;
-      padding: 18px 0;
-      background: rgba(11,16,32,0.65);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      animation: pulseGlow 6s ease-in-out infinite;
+      backdrop-filter: blur(10px);
+      background: rgba(8, 17, 17, 0.82);
+      z-index: 20;
     }
 
     .nav {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      align-items: center;
     }
 
     .brand {
-      font-weight: 700;
-      letter-spacing: 0.3px;
-      font-size: 1.05rem;
-      transition: transform 0.25s ease;
+      font-weight: 600;
+      letter-spacing: 0.5px;
     }
 
-    .brand:hover {
-      transform: translateY(-2px);
-    }
+    .brand span { color: var(--teal); }
 
-    .brand span {
-      color: var(--accent-2);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 22px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
+    .nav a {
       color: var(--muted);
-      transition: 0.25s ease;
+      margin-left: 20px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.25s ease;
       position: relative;
     }
 
-    .nav-links a::after {
+    .nav a::after {
       content: "";
       position: absolute;
       left: 0;
       bottom: -6px;
       width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      height: 1px;
+      background: var(--teal);
       transform: scaleX(0);
       transform-origin: left;
       transition: transform 0.25s ease;
     }
 
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    .nav-links a:hover::after {
-      transform: scaleX(1);
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px 20px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      font-weight: 600;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #0d1326;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 10px 30px rgba(124,156,255,0.28);
-    }
-
-    .btn-secondary {
-      border-color: var(--border);
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.08);
-      transform: translateY(-2px);
-    }
+    .nav a:hover { color: var(--text); }
+    .nav a:hover::after { transform: scaleX(1); }
 
     .hero {
-      padding: 88px 0 60px;
-      position: relative;
-    }
-
-    .hero::before,
-    .hero::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(18px);
-      pointer-events: none;
-      animation: drift 8s ease-in-out infinite;
-    }
-
-    .hero::before {
-      width: 280px;
-      height: 280px;
-      top: 20px;
-      right: -80px;
-      background: rgba(124,156,255,0.12);
-    }
-
-    .hero::after {
-      width: 220px;
-      height: 220px;
-      left: -60px;
-      bottom: 0;
-      background: rgba(142,240,208,0.08);
-      animation-duration: 10s;
-    }
-
-    .hero-grid {
+      padding: 88px 0 64px;
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 32px;
+      grid-template-columns: 1fr 220px;
+      gap: 40px;
       align-items: center;
     }
 
     .eyebrow {
       display: inline-block;
-      color: var(--accent-2);
-      font-size: 0.92rem;
-      margin-bottom: 16px;
-      letter-spacing: 0.08em;
+      color: var(--teal);
+      font-size: 0.85rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
+      margin-bottom: 14px;
     }
 
     h1 {
-      font-size: clamp(2.5rem, 6vw, 4.8rem);
-      line-height: 1.05;
-      margin-bottom: 18px;
+      font-size: 2.8rem;
+      margin-bottom: 16px;
       letter-spacing: -0.04em;
+      line-height: 1.05;
     }
 
-    .hero p {
+    .subtitle {
       color: var(--muted);
-      font-size: 1.05rem;
-      max-width: 58ch;
-      margin-bottom: 28px;
+      max-width: 560px;
+      margin-bottom: 24px;
     }
 
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 28px;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
-    .stat {
-      padding: 18px;
-      border-radius: 20px;
-      transition: transform 0.28s ease, border-color 0.28s ease, background 0.28s ease;
-    }
-
-    .stat:hover {
-      transform: translateY(-6px);
-      background: rgba(255,255,255,0.1);
-    }
-
-    .stat h3 {
-      font-size: 1.5rem;
-      margin-bottom: 4px;
-    }
-
-    .stat p {
-      margin: 0;
+    .links a {
+      margin-right: 16px;
       font-size: 0.95rem;
-    }
-
-    .hero-card {
-      padding: 26px;
-      border-radius: var(--radius);
+      color: var(--muted);
+      transition: color 0.25s ease;
+      display: inline-block;
+      text-decoration: none;
       position: relative;
-      overflow: hidden;
-      animation: float 6s ease-in-out infinite;
     }
 
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: auto -30% -30% auto;
+    @keyframes bounceIdle {
+      0%, 80%, 100% { transform: translateY(0); }  /* quieto la mayor parte */
+      
+      85% { transform: translateY(-6px); }
+      88% { transform: translateY(0); }
+
+      92% { transform: translateY(-4px); }
+      95% { transform: translateY(0); }
+    }
+
+    .links a {
+      animation: bounceIdle 10s ease-in-out infinite;
+    }
+
+    .links a:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .links a:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    .links a:nth-child(3) {
+      animation-delay: 0.8s;
+    }
+
+    .links a:hover {
+      color: var(--teal);
+      transform: translateY(-2px);
+
+    }
+
+    .avatar-wrap {
+      position: relative;
       width: 220px;
       height: 220px;
-      background: radial-gradient(circle, rgba(124,156,255,0.35), transparent 65%);
-      pointer-events: none;
-    }
-
-    .hero-card::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 40%;
-      height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.12), transparent);
-      animation: shimmer 6s linear infinite;
-      pointer-events: none;
-    }
-
-    .profile {
-      border-radius: 22px;
-      padding: 28px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.04));
-      border: 1px solid var(--border);
-      position: relative;
-      z-index: 1;
+      border-radius: 50%;
+      padding: 4px;
+      background: linear-gradient(135deg, rgba(57, 184, 176, 0.65), rgba(57, 184, 176, 0.12));
+      animation: float 5s ease-in-out infinite, glow 6s ease-in-out infinite;
     }
 
     .avatar {
-      width: 88px;
-      height: 88px;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
-      display: grid;
-      place-items: center;
-      font-size: 1.75rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #08101f;
-      margin-bottom: 16px;
-      animation: float 4s ease-in-out infinite;
-    }
-
-    .profile h2 {
-      font-size: 1.35rem;
-      margin-bottom: 6px;
-    }
-
-    .profile .role {
-      color: var(--accent-2);
-      margin-bottom: 14px;
-      font-weight: 500;
-    }
-
-    .profile .about {
-      color: var(--muted);
-      margin-bottom: 18px;
-    }
-
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .chip {
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-size: 0.9rem;
-      background: rgba(255,255,255,0.06);
+      object-fit: cover;
+      display: block;
       border: 1px solid var(--border);
-      color: var(--text);
-      transition: transform 0.25s ease, background 0.25s ease;
-    }
-
-    .chip:hover {
-      transform: translateY(-3px);
-      background: rgba(255,255,255,0.12);
+      filter: saturate(0.96) contrast(1.02);
     }
 
     section {
       padding: 42px 0;
+      border-top: 1px solid var(--border);
     }
 
-    .section-title {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 20px;
-      margin-bottom: 24px;
-    }
-
-    .section-title h2 {
-      font-size: clamp(1.7rem, 3vw, 2.4rem);
-      letter-spacing: -0.03em;
-    }
-
-    .section-title p {
+    h2 {
+      font-size: 1.05rem;
+      margin-bottom: 18px;
       color: var(--muted);
-      max-width: 58ch;
+      font-weight: 500;
+      letter-spacing: 0.03em;
     }
 
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+    .section-line {
+      width: 72px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--teal), transparent);
+      margin-bottom: 18px;
+      transform-origin: left;
+      animation: lineIn 0.8s ease forwards;
     }
 
-    .project-card {
-      border-radius: 24px;
-      overflow: hidden;
-      transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
-      position: relative;
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
-    .project-card:hover {
-      transform: translateY(-8px) scale(1.01);
-      border-color: rgba(255,255,255,0.2);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.28);
-    }
-
-    .project-cover {
-      height: 180px;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(142,240,208,0.35), transparent 25%),
-        radial-gradient(circle at 80% 30%, rgba(124,156,255,0.45), transparent 30%),
-        linear-gradient(135deg, #1d2747, #0f1528);
+    .project {
+      padding: 18px 0;
       border-bottom: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
+      transition: transform 0.25s ease, padding-left 0.25s ease, border-color 0.25s ease;
     }
 
-    .project-cover::after {
+    .project:hover {
+      transform: translateX(6px);
+      padding-left: 6px;
+      border-color: rgba(57, 184, 176, 0.34);
+    }
+
+    .project:last-child { border-bottom: none; }
+
+    .project h3 {
+      font-size: 1.08rem;
+      margin-bottom: 6px;
+      transition: color 0.25s ease;
+    }
+
+    .project:hover h3 { color: var(--teal); }
+
+    .project p,
+    .about p,
+    .contact-copy {
+      color: var(--muted);
+      font-size: 0.97rem;
+      max-width: 640px;
+    }
+
+    .project p {
+      max-height: 1.6em;
+      overflow: hidden;
+      opacity: 0.85;
+      position: relative;
+      transition: max-height 0.4s ease, opacity 0.25s ease;
+    }
+
+    .project p::after {
       content: "";
       position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.12), transparent);
-      transform: translateX(-120%);
-      transition: transform 0.8s ease;
+      right: 0;
+      bottom: 0;
+      width: 30%;
+      height: 1.6em;
+      background: linear-gradient(90deg, transparent, var(--bg));
+      pointer-events: none;
+      transition: opacity 0.3s ease;
     }
 
-    .project-card:hover .project-cover::after {
-      transform: translateX(120%);
+    .project:hover p,
+    .project:focus-within p {
+      max-height: 10em;
+      opacity: 1;
     }
 
-    .project-body {
-      padding: 20px;
+    .project:hover p::after,
+    .project:focus-within p::after {
+      opacity: 0;
     }
 
-    .project-meta {
-      color: var(--accent-2);
-      font-size: 0.9rem;
-      margin-bottom: 10px;
-    }
-
-    .project-body h3 {
-      margin-bottom: 10px;
-      font-size: 1.15rem;
-    }
-
-    .project-body p {
-      color: var(--muted);
-      margin-bottom: 16px;
-      font-size: 0.96rem;
-    }
-
-    .project-links {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .project-links a {
-      font-weight: 600;
-      color: var(--text);
-      transition: color 0.25s ease, transform 0.25s ease;
+    .contact-email {
       display: inline-block;
+      margin-top: 16px;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(57, 184, 176, 0.4);
+      transition: color 0.25s ease, border-color 0.25s ease;
     }
 
-    .project-links a:hover {
-      color: var(--accent-2);
-      transform: translateX(3px);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .panel {
-      border-radius: 24px;
-      padding: 24px;
-      transition: transform 0.28s ease, background 0.28s ease;
-    }
-
-    .panel:hover {
-      transform: translateY(-5px);
-      background: rgba(255,255,255,0.1);
-    }
-
-    .panel h3 {
-      margin-bottom: 12px;
-      font-size: 1.1rem;
-    }
-
-    .panel p,
-    .panel li {
-      color: var(--muted);
-    }
-
-    .panel ul {
-      padding-left: 18px;
-      display: grid;
-      gap: 8px;
-    }
-
-    .contact {
-      padding-bottom: 84px;
-    }
-
-    .contact-card {
-      border-radius: 28px;
-      padding: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
-      transition: transform 0.3s ease;
-    }
-
-    .contact-card:hover {
-      transform: translateY(-4px);
-    }
-
-    .contact-card p {
-      color: var(--muted);
-      max-width: 60ch;
-      margin-top: 8px;
+    .contact-email:hover {
+      color: var(--teal);
+      border-color: var(--teal);
     }
 
     footer {
-      padding: 24px 0 42px;
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -569,208 +326,130 @@
       }
     }
 
-    @media (max-width: 980px) {
-      .hero-grid,
-      .about-grid,
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .stats {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .section-title {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
+    @media (max-width: 700px) {
       .hero {
-        padding-top: 56px;
+        grid-template-columns: 1fr;
+      }
+
+      .avatar-wrap {
+        margin-top: 8px;
       }
     }
   </style>
 </head>
 <body>
+
   <header>
     <div class="container nav">
-      <a href="#home" class="brand">Your<span>Portfolio</span></a>
-      <nav class="nav-links">
+      <div class="brand">Alejandra <span>Guerra</span></div>
+      <div>
         <a href="#projects">Projects</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
-      </nav>
+      </div>
     </div>
   </header>
 
-  <main>
-    <section class="hero reveal visible" id="home">
-      <div class="container hero-grid">
-        <div>
-          <span class="eyebrow reveal visible delay-1">Designer • Developer • Creator</span>
-          <h1 class="reveal visible delay-2">Building modern digital experiences for the future.</h1>
-          <p class="reveal visible delay-3">
-            I create clean, engaging, and scalable products. This portfolio is ready to grow with my future projects,
-            experiments, and ideas.
-          </p>
+  <main class="container">
 
-          <div class="hero-actions reveal visible delay-4">
-            <a class="btn btn-primary" href="#projects">View Projects</a>
-            <a class="btn btn-secondary" href="#contact">Get in Touch</a>
-          </div>
+    <section class="hero reveal visible">
+      <div>
+        <div class="eyebrow reveal visible">React · Svelte · TypeScript · Microservices · .NET · PostgreSQL</div>
+        <h1 class="reveal visible">Senior Software Engineer</h1>
+        <p class="subtitle reveal visible">
+          I build scalable, user-focused products using React, Svelte and TypeScript.
+          Passionate about clean architecture, performance, and meaningful user experiences.
+        </p>
 
-          <div class="stats reveal visible delay-4">
-            <div class="stat glass">
-              <h3>06+</h3>
-              <p>Future project slots ready</p>
-            </div>
-            <div class="stat glass">
-              <h3>100%</h3>
-              <p>Responsive modern layout</p>
-            </div>
-            <div class="stat glass">
-              <h3>∞</h3>
-              <p>Scalable for new ideas</p>
-            </div>
-          </div>
+        <div class="links reveal visible">
+          <a href="mailto:alegu3rra@gmail.com">Email</a>
+          <a href="https://github.com/Alegu3rra" target="_blank">GitHub</a>
+          <a href="https://www.linkedin.com/in/teresaalejandraguerra" target="_blank">LinkedIn</a>
         </div>
+      </div>
 
-        <div class="hero-card glass reveal visible delay-2">
-          <div class="profile">
-            <div class="avatar">YN</div>
-            <h2>Your Name</h2>
-            <div class="role">Frontend Developer / Creative Technologist</div>
-            <p class="about">
-              Add a short personal intro here. Talk about what you build, what you enjoy, and the kind of work you want to attract.
-            </p>
-            <div class="chips">
-              <span class="chip">HTML</span>
-              <span class="chip">CSS</span>
-              <span class="chip">JavaScript</span>
-              <span class="chip">UI Design</span>
-              <span class="chip">Future Projects</span>
-            </div>
-          </div>
-        </div>
+      <div class="avatar-wrap reveal visible">
+        <img src="images/me.jpg" alt="Alejandra Guerra" class="avatar" />
       </div>
     </section>
 
     <section id="projects" class="reveal">
-      <div class="container">
-        <div class="section-title">
-          <div>
-            <h2>Featured Projects</h2>
-          </div>
+      <div class="section-line"></div>
+      <h2>Projects</h2>
+      <div class="projects">
+
+        <div class="project reveal">
+          <h3>Legal Case Management System</h3>
           <p>
-            These cards are placeholders you can replace with real work later. You can duplicate any card to keep expanding your portfolio.
+Led the redesign of SAT’s legal case management platform, boosting user experience by 40% with Svelte
+and TypeScript.
+Defined frontend component architecture, state management, and coding best practices.
+Coordinated timelines and deliverables across a multidisciplinary team of 20+ members.
+Integrated with a Rust backend and services including PostgreSQL, Redis, and RabbitMQ.
+Delivered secure authentication and role-based access control, reducing unauthorized access incidents
+by 35%.
           </p>
         </div>
 
-        <div class="projects-grid">
-          <article class="project-card glass reveal delay-1">
-            <div class="project-cover"></div>
-            <div class="project-body">
-              <div class="project-meta">Coming Soon • Web App</div>
-              <h3>Project One</h3>
-              <p>A brief description of your future project. Explain the idea, the stack, and the value it delivers.</p>
-              <div class="project-links">
-                <a href="#">Live Demo</a>
-                <a href="#">GitHub</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card glass reveal delay-2">
-            <div class="project-cover"></div>
-            <div class="project-body">
-              <div class="project-meta">In Progress • Mobile</div>
-              <h3>Project Two</h3>
-              <p>Use this section for a personal app, startup idea, freelance build, or experimental side project.</p>
-              <div class="project-links">
-                <a href="#">Case Study</a>
-                <a href="#">Preview</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card glass reveal delay-3">
-            <div class="project-cover"></div>
-            <div class="project-body">
-              <div class="project-meta">Concept • UI/UX</div>
-              <h3>Project Three</h3>
-              <p>Show a concept piece, redesign, dashboard, portfolio experiment, or something you want to launch soon.</p>
-              <div class="project-links">
-                <a href="#">Behance</a>
-                <a href="#">Details</a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="reveal">
-      <div class="container">
-        <div class="section-title">
-          <div>
-            <h2>About Me</h2>
-          </div>
+        <div class="project reveal">
+          <h3>Online Paperwork Management Tool</h3>
           <p>
-            Use this space to present your story, strengths, and the type of opportunities you are looking for.
+Developed the frontend for SAT’s asset responsibility management system, digitizing issuance, approval,
+and tracking processes.
+Built dynamic, reusable UI components with React.js and TypeScript following atomic design principles.
+Applied clean architecture to streamline logic and improve maintainability.
+Collaborated with backend teams (.NET 6 + PostgreSQL) to optimize API communication.
+Reduced form submission times by 30%, increasing responsiveness under peak workloads.
           </p>
         </div>
 
-        <div class="about-grid">
-          <div class="panel glass reveal delay-1">
-            <h3>Who I Am</h3>
-            <p>
-              I am a builder focused on creating polished digital experiences. I enjoy transforming ideas into interfaces that feel modern, intuitive, and useful.
-            </p>
-          </div>
-
-          <div class="panel glass reveal delay-2">
-            <h3>What I Work With</h3>
-            <ul>
-              <li>Responsive websites and landing pages</li>
-              <li>Frontend applications and dashboards</li>
-              <li>UI systems and interaction design</li>
-              <li>Personal, freelance, and experimental projects</li>
-            </ul>
-          </div>
+        <div class="project reveal">
+          <h3>Competitive Programming Platform</h3>
+          <p>
+Designing and developing a web platform inspired by LeetCode, tailored for the competitive programming
+team at UNAM.
+Supports students preparing for ICPC and other contests by offering problem sets, practice modes, and
+progress tracking.
+Built with a modern stack (React, TypeScript, PostgreSQL, Docker) and scalable architecture to ensure long-
+term growth.
+Provides a collaborative learning space, enabling peers to improve their algorithmic skills and reach
+competitive goals.
+Reflects my commitment to education and knowledge sharing, bridging my professional expertise with
+community impact.
+          </p>
         </div>
+
       </div>
     </section>
 
-    <section class="contact reveal" id="contact">
-      <div class="container">
-        <div class="contact-card glass">
-          <div>
-            <h2>Let’s build something great.</h2>
-            <p>
-              Add your email, LinkedIn, GitHub, or any platform where people can reach you for collaborations and opportunities.
-            </p>
-          </div>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="mailto:youremail@example.com">Email Me</a>
-            <a class="btn btn-secondary" href="#">LinkedIn</a>
-          </div>
-        </div>
-      </div>
+    <section id="about" class="about reveal">
+      <div class="section-line"></div>
+      <h2>About</h2>
+      <p>
+        Senior Frontend Engineer with 5+ years of experience designing and delivering scalable, user-centered web 
+        applications. Proven track record leading cross-functional teams and aligning technical decisions with business
+        goals. Expert in React and Svelte, with strong backend integration skills and hands-on experience optimizing
+        systems that serve thousands of users. Recognized for improving user experience by 40% on high-impact
+        government platforms, implementing secure authentication flows, and ensuring compliance in mission-critical
+        applications.
+      </p>
     </section>
+
+    <section id="contact" class="reveal">
+      <div class="section-line"></div>
+      <h2>Contact</h2>
+      <p class="contact-copy">
+        Available for senior frontend roles and product-focused teams.
+      </p>
+      <a class="contact-email" href="mailto:alegu3rra@gmail.com">alegu3rra@gmail.com</a>
+    </section>
+
   </main>
 
-  <footer>
-    <div class="container">
-      © 2026 Your Name. Designed to grow with your future projects.
-    </div>
+  <footer class="container">
+    © 2026 Alejandra Guerra
   </footer>
+
   <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
